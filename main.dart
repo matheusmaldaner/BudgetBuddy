@@ -1,25 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
-
 import 'dart:math';
 
-//~ are changes made - matheus
-
-//? are questions I had - matheus
-
-//! are comments I added - matheus
-
 void main() {
-  //!passes widget MyApp
-
+  // passes widget MyApp
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
-
+  // this widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -36,175 +27,157 @@ void populateList(List<FlSpot> list, int rand) {
   var random = Random(rand);
 
   // iterates 100,000 times
-
   if (list.isEmpty) {
     for (int i = 0; i < 100000; ++i) {
       double maxX = random.nextInt(365).toDouble();
-
-      double maxY =
-          (random.nextDouble() * 199 + 1); //? unsure how this may affect graph
+      double maxY = random.nextDouble() * 199 + 1;
 
       list.add(FlSpot(maxX, maxY));
     }
   }
 }
 
-//Collapse the data (sum up transactions made on the same day and make a list)
-
+// collapse the data: sums up transactions made on the same day and forms a list
 List<FlSpot> sumData(List<FlSpot> list) {
   List<FlSpot> temp = [];
 
-  //Add first point
+  // adds first point
+  temp.add(const FlSpot(0, 0));
 
-  temp.add(const FlSpot(0, 0)); //~ added const keyword
-
+  // declares two empty maps
   Map<double, double> map = {};
-
   Map<double, double> mapMonthly = {};
 
-  //Fill the map
-
+  // populates the maps
   for (var a in list) {
-    //First x of is kind push Flspot and push into set
 
+    // first x of is kind is pushed into map
     if (map.containsKey(a.x) == false) {
       map[a.x] = a.y;
     }
 
-    //If that x already exists... add the y's
-
+    // if that x already exists, add the y components
     else {
-      //If value is null use zero instead
 
+      // in case value is null, use zero instead
       double newY = (map[a.x] ?? 0) + a.y;
 
       map[a.x] = newY;
     }
   }
 
-  //Convert map to month basis
-
+  // makes subdivisions for each month expenditure
   map.forEach((key, value) {
     double temp = 0;
-    //Converting to string then back to double to round off to nearest 100th
-    //Jan
 
+    // converting to string then back to double to round off to nearest 100th
+    // January
     if (key <= 31) {
       temp = (mapMonthly[30.41] ?? 0) + value;
       mapMonthly[30.41] = double.parse(temp.toStringAsFixed(2));
     }
 
-    //Feb
-
+    // February
     else if (key <= 61) {
       temp = (mapMonthly[60.83] ?? 0) + value;
       mapMonthly[60.83] = double.parse(temp.toStringAsFixed(2));
     }
 
-    //Mar
-
+    // March
     else if (key <= 92) {
       temp = (mapMonthly[91.25] ?? 0) + value;
       mapMonthly[91.25] = double.parse(temp.toStringAsFixed(2));
     }
 
-    //Apr
-
+    // April
     else if (key <= 122) {
       temp = (mapMonthly[122] ?? 0) + value;
       mapMonthly[122] = double.parse(temp.toStringAsFixed(2));
     }
 
-    //May
-
+    // May
     else if (key <= 153) {
       temp = (mapMonthly[153] ?? 0) + value;
       mapMonthly[153] = double.parse(temp.toStringAsFixed(2));
     }
 
-    //Jun
-
+    // June
     else if (key <= 183) {
       temp = (mapMonthly[183] ?? 0) + value;
       mapMonthly[183] = double.parse(temp.toStringAsFixed(2));
     }
 
-    //July
-
+    // July 
     else if (key <= 214) {
       temp = (mapMonthly[214] ?? 0) + value;
       mapMonthly[214] = double.parse(temp.toStringAsFixed(2));
     }
 
-    //Aug
-
+    // August
     else if (key <= 245) {
       temp = (mapMonthly[245] ?? 0) + value;
       mapMonthly[245] = double.parse(temp.toStringAsFixed(2));
     }
 
-    //Sep
-
+    // September
     else if (key <= 275) {
       temp = (mapMonthly[275] ?? 0) + value;
       mapMonthly[275] = double.parse(temp.toStringAsFixed(2));
     }
 
-    //Oct
-
+    // October
     else if (key <= 306) {
       temp = (mapMonthly[306] ?? 0) + value;
       mapMonthly[306] = double.parse(temp.toStringAsFixed(2));
     }
 
-    //Nov
-
+    // November
     else if (key <= 336) {
       temp = (mapMonthly[366] ?? 0) + value;
       mapMonthly[336] = double.parse(temp.toStringAsFixed(2));
     }
 
-    //Dec
-
+    // December
     else {
       temp = (mapMonthly[366] ?? 0) + value;
       mapMonthly[366] = double.parse(temp.toStringAsFixed(2));
     }
   });
 
-  //turn map into list to sort then back into map
-
+  // turn map into list to sort it, then convert it back into a map
   mapMonthly = Map.fromEntries(
       mapMonthly.entries.toList()..sort((e1, e2) => e1.key.compareTo(e2.key)));
 
-  //For every key and value make an FlSpot
-
-  //Bc ordered it will be organized from day 0++
+  // for every key and value make an FlSpot
+  // because map is ordered, it will be organized starting from day 0
 
   mapMonthly.forEach((key, value) => temp.add(FlSpot(key, value)));
 
   return temp;
 }
 
-//~quick sort function - !!Orders based on Y component
-
+// quick sort function based on y component of FlSpot
 void quickSort(List<FlSpot> arr, int left, int right) {
+  // makes sure list is not empty
   if (arr.isNotEmpty) {
     if (left < right) {
       int pivotIndex = partition(arr, left, right);
-
+      // calls quicksort recursively on left subarray
       quickSort(arr, left, pivotIndex - 1);
-
+      // calls quicksort recursively on right subarray
       quickSort(arr, pivotIndex + 1, right);
     }
   }
 }
 
+// partitions the list based on the y component of FlSpot
 int partition(List<FlSpot> arr, int left, int right) {
+  // assigns pivot value to the very right
   FlSpot pivotValue = arr[right];
 
   int i = left - 1;
 
+  // loops subarray from left to right
   for (int j = left; j < right; j++) {
     if (arr[j].y < pivotValue.y) {
       i++;
@@ -215,9 +188,11 @@ int partition(List<FlSpot> arr, int left, int right) {
 
   swap(arr, i + 1, right);
 
+  // returns index of pivot element
   return i + 1;
 }
 
+// swaps two elements in the list
 void swap(List<FlSpot> arr, int i, int j) {
   FlSpot temp = arr[i];
 
@@ -250,41 +225,34 @@ void shellSort(List<FlSpot> arr, int size) {
   }
 }
 
-
+// function used to get max, min and median of lists
 double getMaxMinMedian(String data, List<FlSpot> sortedList) {
   double max = 0;
-
   double min = 0;
-
   double median = 0;
 
-  //~handles edge case with empty list
-
+  // handles edge case with empty list
   if (sortedList.isEmpty) {
     return 0;
   }
 
-  //Max
-
+  // returns max
   if (data == "max") {
     max = sortedList[sortedList.length - 1].y;
 
     return max;
   }
 
-  //Min
-
+  // returns min
   else if (data == "min") {
     min = sortedList[0].y;
 
     return min;
   }
 
-  //Median
-
+  // returns median
   else {
-    //If even
-
+    // in case sorted list is even
     if ((sortedList.length % 3) == 0) {
       int index =
           sortedList.length ~/ 2; //Tilde is used to turn division to integer
@@ -294,11 +262,9 @@ double getMaxMinMedian(String data, List<FlSpot> sortedList) {
       return median;
     }
 
-    //Odd case
-
+    // in case sorted list is odd
     else {
       double floorValue = sortedList[(sortedList.length / 2).floor()].y;
-
       double ceilingValue = sortedList[(sortedList.length / 2).ceil()].y;
 
       median = ((floorValue + ceilingValue) / 2);
@@ -308,7 +274,7 @@ double getMaxMinMedian(String data, List<FlSpot> sortedList) {
   }
 }
 
-//Widget to label left axis will start at 100k and go up by 100k each interval
+// widget to label left axis will start at 100k and go up by 100k each interval
 Widget leftAxis(double value, TitleMeta meta) {
   const style = TextStyle(
     fontSize: 10,
@@ -325,6 +291,7 @@ Widget leftAxis(double value, TitleMeta meta) {
   );
 }
 
+// additional widget for labeling the axis on monthly basis
 Widget bottomAxis(double value, TitleMeta meta) {
   const style = TextStyle(
     fontSize: 10,
@@ -375,58 +342,40 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // Initial data for the graph
+  // initial data for the graph
 
   final List<bool> _toggleLists = <bool>[
     false,
     false,
     false
-  ]; //~ initialized it to false because the graph is not present
+  ]; // initializes it to false because the graph is not visible
 
   List<Color> myGradient = [Colors.greenAccent, Colors.green];
 
-  //List<FlSpot> currentList = sumData(getList(1)); //? why was it defined like this
-
   List<FlSpot> currentList = [];
 
-  //Use from inorder to get a copy of the list, dhanges wont reflect
-
-  //!declares all lists variables to be empty
-
+  // declares all lists variables to be empty
   List<FlSpot> list1 = [];
-
   List<FlSpot> list2 = [];
-
   List<FlSpot> list3 = [];
 
-  //need to figure out way around this bc list1 technically isnt initialized
+  List<FlSpot> _chartData = []; 
 
-  // ~still playing with this, but if set to empty list, graph does not show up
-
-  List<FlSpot> _chartData =
-      []; // List<FlSpot>.from(sumData(List<FlSpot>.from(getList(1)))); // ~changed to pass declaration instead of list1
-
-  // List<FlSpot> _chartData = List<FlSpot>.from(sumData(list1));
-
-  String currentMethod =
-      'Method:'; // ~changed so method name shows when option is selected
-
+  // text on the left of the screen displaying stats
+  String currentMethod = 'Method:'; 
   String mostExpensive = '0';
-
   String leastExpensive = '0';
-
   String medianPurchase = '0';
 
-  int sortTime = 0; //~changed variable name from shellSort1Time
+  // stores sorting time for each function
+  int sortTime = 0; 
 
   @override
   Widget build(BuildContext context) {
     // fills lists up using populate function
 
     populateList(list1, 100);
-
     populateList(list2, 250);
-
     populateList(list3, 500);
 
     return Scaffold(
@@ -444,27 +393,21 @@ class _MyHomePageState extends State<MyHomePage> {
                   padding: const EdgeInsets.only(top: 30.0),
                   child: ElevatedButton(
 
-                      // SHELL SORT BUTTON
-
+                      // Shell Sort button
                       onPressed: () {
                         setState(() {
                           currentMethod = 'Method: Shell Sort';
 
                           List<FlSpot> sortedShell = [...currentList];
 
-                          //!tracks speed of shell sort algorithm
-
+                          // tracks speed of shell sort algorithm
                           Stopwatch stopwatch = Stopwatch();
-
                           stopwatch.start();
-
                           shellSort(sortedShell, sortedShell.length);
-
                           stopwatch.stop();
-
                           sortTime = stopwatch.elapsedMilliseconds;
 
-                          //!calls getMaxMinMedian function and updates respective variables
+                          // calls getMaxMinMedian function and updates respective variables
 
                           mostExpensive = getMaxMinMedian("max", sortedShell)
                               .toStringAsFixed(2);
@@ -476,7 +419,6 @@ class _MyHomePageState extends State<MyHomePage> {
                               getMaxMinMedian("median", sortedShell)
                                   .toStringAsFixed(2);
 
-                          //_chartData = sumData(sortedShell);
                         });
                       },
                       child: const Text('Shell Sort')),
@@ -484,33 +426,27 @@ class _MyHomePageState extends State<MyHomePage> {
                 const SizedBox(
                   height: 50,
                   width:
-                      200, //~changed from 300 to current to lessen gap between options
+                      200, 
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 30.0),
                   child: ElevatedButton(
 
-                      // QUICK SORT BUTTON
-
+                      // Quick Sort button
                       onPressed: () {
                         setState(() {
                           currentMethod = 'Method: Quick Sort';
 
                           List<FlSpot> sortedQuick = [...currentList];
 
-                          //!tracks speed of quick sort algorithm
-
+                          // tracks speed of quick sort algorithm
                           Stopwatch stopwatch2 = Stopwatch();
-
                           stopwatch2.start();
-
                           quickSort(sortedQuick, 0, sortedQuick.length - 1);
-
                           stopwatch2.stop();
-
                           sortTime = stopwatch2.elapsedMilliseconds;
 
-                          //!calls getMaxMinMedian function and updates respective variables
+                          // calls getMaxMinMedian function and updates respective variables
 
                           mostExpensive = getMaxMinMedian("max", sortedQuick)
                               .toStringAsFixed(2);
@@ -522,7 +458,6 @@ class _MyHomePageState extends State<MyHomePage> {
                               getMaxMinMedian("median", sortedQuick)
                                   .toStringAsFixed(2);
 
-                          //_chartData = sumData(sortedQuick);
                         });
                       },
                       child: const Text('Quick Sort')),
@@ -536,7 +471,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   SizedBox(
 
                       // dimensions for text book on left of graph
-
                       height: 300,
                       width: 300,
                       child: Column(
@@ -586,7 +520,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             drawHorizontalLine: true,
                             drawVerticalLine: true,
                             horizontalInterval: 200000,
-                            //Every month
+                            // interval for each month
                             verticalInterval: 30.4,
                             getDrawingHorizontalLine: (value) {
                               return FlLine(
@@ -602,9 +536,9 @@ class _MyHomePageState extends State<MyHomePage> {
                             },
                           ),
                           lineBarsData: [
-                            //Aesthetics of the actual line on the graph
+                            // aesthetics of the line on the graph
                             LineChartBarData(
-                                spots: _chartData, //Data of the graph
+                                spots: _chartData, // data of the graph
                                 isCurved: true,
                                 gradient: LinearGradient(colors: myGradient),
                                 barWidth: 5,
@@ -612,8 +546,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 dotData: FlDotData(
                                   show: false,
                                 ),
-                                //Shade in under the line on graph
-                                //call below bar and use bar area
+                                // shades under the line on graph
+                                // calls below bar and uses bar area
                                 belowBarData: BarAreaData(
                                   show: true,
                                   gradient: LinearGradient(
@@ -633,12 +567,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                 color: Colors.black,
                                 width: 1,
                               ),
-                              //No right border
+                              // no right border
                               right: BorderSide(
                                 color: Colors.transparent,
                                 width: 0,
                               ),
-                              //No top border
+                              // no top border
                               top: BorderSide(
                                 color: Colors.transparent,
                                 width: 0,
@@ -658,11 +592,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   direction: Axis.horizontal,
                   onPressed: (int index) {
                     setState(() {
-                      //Keep track of button and method
-
+                      // keeps track of button and method
                       for (int i = 0; i < _toggleLists.length; i++) {
-                        // index is the selected option (list1 corresponds 0, list2...)
 
+                        // index is the selected option (list1 corresponds 0, list2...)
                         if (i == index) {
                           _toggleLists[i] = true;
 
@@ -675,8 +608,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
                             _chartData = sumData(currentList);
                           } else if (i == 2) {
-                            // ~changed from else to else if (i == 2)
-
                             currentList = [...list3];
 
                             _chartData = sumData(currentList);
