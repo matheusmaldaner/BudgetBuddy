@@ -95,7 +95,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Authors
 
 Matheus Kunzler Maldaner - [Github](https://github.com/matheusmaldaner)
+
 Samuel Trejo - [Github](https://github.com/samtrejo)
+
 Nico Gleason - [Github](https://github.com/nicogleason)
 
 
@@ -103,6 +105,7 @@ Nico Gleason - [Github](https://github.com/nicogleason)
 ## Additional Links
 
 Project Link: [Budget Buddy](https://github.com/your_username_/Budget-Buddy)
+
 Project Video: [Youtube](https://youtube.com)
 
 ---
