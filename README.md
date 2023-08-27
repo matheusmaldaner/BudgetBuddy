@@ -37,8 +37,6 @@
 
 Budget Buddy is a Flutter application designed to display monthly spending data given a list of purchases made in a year. The app provides analytical features including Shell Sort and Quick Sort for data analysis, and various statistics like highest, lowest, and median purchases.
 
-![App Screenshot](screenshots/app_screenshot.png)
-
 ### Built With
 
 * [Flutter](https://flutter.dev/)
@@ -96,7 +94,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Matheus Kunzler Maldaner - [Github](https://github.com/matheusmaldaner)
 
-Samuel Trejo - [Github](https://github.com/samtrejo)
+Samuel Trejo - [Github](https://github.com/s-trejo)
 
 Nico Gleason - [Github](https://github.com/nicogleason)
 
@@ -106,7 +104,7 @@ Nico Gleason - [Github](https://github.com/nicogleason)
 
 Project Link: [Budget Buddy](https://github.com/your_username_/Budget-Buddy)
 
-Project Video: [Youtube](https://youtube.com)
+Project Video: [Youtube](https://www.youtube.com/watch?v=c89N0RcXqX0&t=45s&ab_channel=MatheusMaldaner)
 
 ---
 
