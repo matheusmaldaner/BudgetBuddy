@@ -106,6 +106,4 @@ Project Link: [Budget Buddy](https://github.com/your_username_/Budget-Buddy)
 
 Project Video: [Youtube](https://www.youtube.com/watch?v=c89N0RcXqX0&t=45s&ab_channel=MatheusMaldaner)
 
----
 
-```
