@@ -1,109 +1,86 @@
-<!-- PROJECT LOGO -->
-<br />
-<p align="center">
-  <h3 align="center">Budget Buddy</h3>
+<div align="center">
 
-  <p align="center">
-    Monthly Expenditure Tracking App
-  </p>
-</p>
+<!-- Replace with your own banner/logo path -->
+<img src="banner.svg" alt="Budget Buddy Logo">
 
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#dependencies">Dependencies</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#features">Features</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#authors">Authors</a></li>
-  </ol>
-</details>
+*A Monthly Expenditure Tracking App for Visualizing Spending & Comparing Sorting Algorithms*
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+<!-- Badges (edit links as needed) -->
+[![Platform](https://img.shields.io/badge/platform-Flutter-blue)](https://flutter.dev/)
+![Dart](https://img.shields.io/badge/dart-%3E%3D2.9.0-0175C2)
+![Flutter](https://img.shields.io/badge/flutter-%3E%3D2.0.0-02569B)
 
-Budget Buddy is a Flutter application designed to display monthly spending data given a list of purchases made in a year. The app provides analytical features including Shell Sort and Quick Sort for data analysis, and various statistics like highest, lowest, and median purchases.
+</div>
 
-### Built With
+---
 
-* [Flutter](https://flutter.dev/)
-* [Dart](https://dart.dev/)
-* [FL Chart](https://pub.dev/packages/fl_chart)
+### 📹 Watch the Demo
 
-<!-- GETTING STARTED -->
-## Getting Started
+We developed this project as the final project for our Data Structures and Algorithms class at the University of Florida in 2023.
 
-To get a local copy up and running, follow these simple steps.
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=c89N0RcXqX0&t=45s" target="_blank">
+    <img
+      src="https://img.youtube.com/vi/c89N0RcXqX0/maxresdefault.jpg"
+      alt="Watch the demo video"
+      width="600"
+      style="border-radius: 8px;"
+    />
+  </a>
 
-### Dependencies
+  <br><br>
 
-* Flutter SDK >=2.0.0
-* Dart >=2.9.0
-* FL Chart ^0.36.0
+  <a href="https://www.youtube.com/watch?v=c89N0RcXqX0&t=45s" target="_blank">
+    <img
+      src="https://img.shields.io/badge/%20Watch%20Demo%20Video-red?logo=youtube"
+      alt="Watch on YouTube"
+    />
+  </a>
+</div>
 
-### Installation
+---
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Budget-Buddy.git
-   ```
-2. Navigate to the project folder and install dependencies
-   ```sh
-   cd Budget-Buddy
-   flutter pub get
-   ```
-3. Run the app
-   ```sh
-   flutter run
-   ```
+### 💸 Overview
 
-<!-- USAGE EXAMPLES -->
-## Usage
+Budget Buddy helps you **track monthly spending** from a year’s worth of purchases and understand your habits through clean visualizations and summary statistics.  
+It also lets you **compare sorting algorithms** (Shell Sort vs. Quick Sort) by measuring elapsed time and showing how the data changes when ordered.
 
-1. Choose one of the predefined datasets (Sam, Matheus, Nico) to populate the graph.
-2. Use the "Shell Sort" or "Quick Sort" button to sort the data and display statistical information.
+## Quick Start
 
-<!-- FEATURES -->
-## Features
+You only need to install dependencies and run the Flutter app:
 
-* Monthly Expenditure Summary
-* Sort Algorithms (Quick Sort, Shell Sort)
-* Purchase Statistics (Highest, Lowest, Median)
-* Time Elapsed for Sorting Algorithms
+### (1) 🧰 Install Dependencies
 
-<!-- LICENSE -->
-## License
+Make sure you have:
 
-Distributed under the MIT License. See `LICENSE` for more information.
+- **Flutter SDK >= 2.0.0**
+- **Dart >= 2.9.0**
 
-<!-- AUTHORS -->
-## Authors
+Then install packages:
 
-Matheus Kunzler Maldaner - [Github](https://github.com/matheusmaldaner)
+```bash
+flutter pub get
+```
 
-Samuel Trejo - [Github](https://github.com/s-trejo)
+### (2) ▶️ Run the App
 
-Nico Gleason - [Github](https://github.com/nicogleason)
+```bash
+flutter run
+```
 
 
-<!-- ADDITIONAL LINKS -->
-## Additional Links
+## 🧩 Tech Stack
 
-Project Link: [Budget Buddy](https://github.com/your_username_/Budget-Buddy)
+| Component     | Technology |
+| ------------- | ---------- |
+| 📱 App        | Flutter    |
+| 🧠 Language   | Dart       |
+| 📊 Charts     | FL Chart   |
 
-Project Video: [Youtube](https://www.youtube.com/watch?v=c89N0RcXqX0&t=45s&ab_channel=MatheusMaldaner)
 
 
+## 👥 Authors
+
+- Matheus Kunzler Maldaner — [GitHub](https://github.com/matheusmaldaner)  
+- Samuel Trejo — [GitHub](https://github.com/s-trejo)  
+- Nico Gleason — [GitHub](https://github.com/nicogleason)
